@@ -62,6 +62,11 @@ session_start();
      $resultat->execute(array($numOrdi, $dateAtt, $heureDeb, $heureFin, $idUtil));
 
    }
+if(isset($_POST['cmdAnnulerAttr'])) {
+  $req = $bdd->prepare('UPDATE utilisateur SET numOrdi = null, dateAttribution = null, heureDeb = null, heureFin = null WHERE idUtilisateur = ?');
+  $idUtil = $_POST['idUtil'];
+  $req->execute(array($idUtil));
+ }
  ?>
 
  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
